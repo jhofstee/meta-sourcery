@@ -1,7 +1,3 @@
-#
-# Configuration to use external Sourcery G++ toolchain
-#
-
 EXTERNAL_TOOLCHAIN ?= "UNDEFINED"
 
 # Ensure that pseudo builds both 32 bit and 64 bit binaries, as we need the
@@ -79,16 +75,7 @@ PNBLACKLIST_DYNAMIC += "\
 
 # Determine the prefixes to check for based on the target architecture (before
 # any classes alter TARGET_ARCH)
-EXTERNAL_TARGET_SYSTEMS[powerpc] ?= "powerpc-linux-gnu powerpc-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[powerpc64] ?= "powerpc-linux-gnu powerpc-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[arm] ?= "arm-none-linux-gnueabi arm-mentor-linux-gnueabi"
-EXTERNAL_TARGET_SYSTEMS[aarch64] ?= "aarch64-linux-gnu aarch64-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[mips] ?= "mips-linux-gnu mips-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[mipsel] ?= "mips-linux-gnu mips-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[mips64] ?= "mips64-nlm-linux-gnu mips-linux-gnu mips-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[x86_64] ?= "i686-pc-linux-gnu i686-mentor-linux-gnu x86_64-linux-gnu x86_64-amd-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[i686] ?= "i686-pc-linux-gnu i686-mentor-linux-gnu"
-EXTERNAL_TARGET_SYSTEMS[i586] ?= "i686-pc-linux-gnu i686-mentor-linux-gnu"
+EXTERNAL_TARGET_SYSTEMS[arm] ?= "arm-none-linux-gnueabi arm-linux-gnueabihf arm-bcm2708hardfp-linux-gnueabi"
 EXTERNAL_TARGET_SYSTEMS = "${TARGET_SYS}"
 
 def external_target_sys(d):
@@ -228,5 +215,3 @@ EXTERNAL_PV_SUFFIX_allarch = ""
 
 BUILDCFG_VARS += "EXTERNAL_TOOLCHAIN SOURCERY_VERSION GCC_VERSION"
 
-# Adjust tunings to ensure we're using Sourcery G++ multilibs
-require conf/distro/include/sourcery-tuning.inc
